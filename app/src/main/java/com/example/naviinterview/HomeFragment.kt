@@ -8,12 +8,13 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Switch
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.example.Naviinterview.PullRequestListFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment() {
     private lateinit var organisationField: EditText
     private lateinit var repoField: EditText
     private lateinit var pullRequestTypeField: Switch
@@ -41,6 +42,10 @@ class HomeFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun shouldShowBackButton(): Boolean {
+        return false
     }
 
     companion object {

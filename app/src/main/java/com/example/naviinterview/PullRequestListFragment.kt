@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.naviinterview.BaseFragment
 import com.example.naviinterview.PullRequestListAdapter
 import com.example.naviinterview.R
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,7 +25,7 @@ private const val REPO_NAME = "repoName"
 private const val PULL_REQUEST_TYPE = "pullRequestType"
 
 @AndroidEntryPoint
-class PullRequestListFragment : Fragment() {
+class PullRequestListFragment : BaseFragment() {
     private var organisationName: String? = null
     private var repoName: String? = null
     private var pullRequestType: Boolean = false
@@ -64,6 +65,10 @@ class PullRequestListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        activity?.actionBar?.setHomeButtonEnabled(true)
+        activity?.actionBar?.setDisplayHomeAsUpEnabled(true)
+
         recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.adapter = pullRequestListAdapter
         recyclerView.layoutManager = LinearLayoutManager(view.context)
@@ -77,6 +82,10 @@ class PullRequestListFragment : Fragment() {
         recyclerView.addItemDecoration(divider)
         progressBar = view.findViewById(R.id.progressBar)
         heroMessage = view.findViewById(R.id.heroMessage)
+    }
+
+    override fun shouldShowBackButton(): Boolean {
+        return true
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
