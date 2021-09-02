@@ -1,0 +1,6 @@
+include ':repository'
+include ':domain'
+include ':entity'
+include ':entity'
+include ':app'
+rootProject.name = "NaviInterview"
