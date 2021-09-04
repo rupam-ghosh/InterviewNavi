@@ -31,11 +31,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun addHomeFragment() {
-        supportFragmentManager.beginTransaction().replace(
-            R.id.mainContainer,
-            HomeFragment.newInstance()
-        )
-        .addToBackStack(HomeFragment::class.simpleName).commit()
+        if (supportFragmentManager.backStackEntryCount == 0) {
+            supportFragmentManager.beginTransaction().replace(
+                    R.id.mainContainer,
+                    HomeFragment.newInstance()
+            )
+                    .addToBackStack(HomeFragment::class.simpleName).commit()
+        }
     }
 
     override fun onBackPressed() {

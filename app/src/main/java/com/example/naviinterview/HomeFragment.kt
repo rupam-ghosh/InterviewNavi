@@ -5,18 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
 import android.widget.Switch
 import android.widget.Toast
-import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import com.example.Naviinterview.MainActivity
 import com.example.Naviinterview.PullRequestListFragment
+import com.google.android.material.textfield.TextInputEditText
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : BaseFragment() {
-    private lateinit var organisationField: EditText
-    private lateinit var repoField: EditText
+class HomeFragment : Fragment() {
+    private lateinit var organisationField: TextInputEditText
+    private lateinit var repoField: TextInputEditText
     private lateinit var pullRequestTypeField: Switch
     private lateinit var fetchDataButton: Button
 
@@ -42,10 +42,9 @@ class HomeFragment : BaseFragment() {
                 }
             }
         }
-    }
 
-    override fun shouldShowBackButton(): Boolean {
-        return false
+        val mainActivity = activity as MainActivity
+        mainActivity.toolbar.setNavigationIcon(null)
     }
 
     companion object {

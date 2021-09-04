@@ -24,7 +24,12 @@
             android:textStyle="bold"
             android:text="Enter repository details" />
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
+            app:boxBackgroundColor="@android:color/transparent"
+            android:background="@android:color/transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/organisationName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,8 +38,14 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:hint="Organisation Name eg, vmg" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
+            app:boxBackgroundColor="@android:color/transparent"
+            android:background="@android:color/transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/repoName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -43,6 +54,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:hint="Repo Name eg, redcarpet" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Switch
             android:id="@+id/pullRequestType"

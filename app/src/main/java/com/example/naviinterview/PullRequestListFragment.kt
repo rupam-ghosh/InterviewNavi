@@ -13,7 +13,6 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.naviinterview.BaseFragment
 import com.example.naviinterview.PullRequestListAdapter
 import com.example.naviinterview.R
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,7 +24,7 @@ private const val REPO_NAME = "repoName"
 private const val PULL_REQUEST_TYPE = "pullRequestType"
 
 @AndroidEntryPoint
-class PullRequestListFragment : BaseFragment() {
+class PullRequestListFragment : Fragment() {
     private var organisationName: String? = null
     private var repoName: String? = null
     private var pullRequestType: Boolean = false
@@ -39,21 +38,11 @@ class PullRequestListFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val bundle = savedInstanceState ?: arguments
-        bundle?.let {
+        arguments?.let {
             organisationName = it.getString(ORGANISATION_NAME)
             repoName = it.getString(REPO_NAME)
             pullRequestType = it.getBoolean(PULL_REQUEST_TYPE)
         }
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        outState.apply {
-            putString(ORGANISATION_NAME, organisationName)
-            putString(REPO_NAME, repoName)
-            putBoolean(PULL_REQUEST_TYPE, pullRequestType)
-        }
-        super.onSaveInstanceState(outState)
     }
 
     override fun onCreateView(
@@ -82,10 +71,9 @@ class PullRequestListFragment : BaseFragment() {
         recyclerView.addItemDecoration(divider)
         progressBar = view.findViewById(R.id.progressBar)
         heroMessage = view.findViewById(R.id.heroMessage)
-    }
 
-    override fun shouldShowBackButton(): Boolean {
-        return true
+        val mainActivity = activity as MainActivity
+        mainActivity.toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
