@@ -1,7 +1,5 @@
-package com.example.domain
+package com.example.repository
 
-import com.example.repository.APIConstants
-import com.example.repository.GithubService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

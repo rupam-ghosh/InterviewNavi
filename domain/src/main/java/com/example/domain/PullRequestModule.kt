@@ -1,4 +1,4 @@
-package com.example.naviinterview
+package com.example.domain
 
 import com.example.domain.PullRequests
 import com.example.domain.PullRequestsImpl
