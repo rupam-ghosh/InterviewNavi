@@ -90,7 +90,10 @@ class PullRequestListFragment : Fragment() {
             heroMessage.visibility = if (it.isNotEmpty()) View.VISIBLE else View.INVISIBLE
             heroMessage.text = it
         })
-        getPullRequests()
+
+        if(viewModel.pullRequestsLiveData.value == null) {
+            getPullRequests()
+        }
     }
 
     private fun getPullRequests() {
